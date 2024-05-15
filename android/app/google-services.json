@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "737923656991",
+    "project_id": "monstarev-8e56b",
+    "storage_bucket": "monstarev-8e56b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737923656991:android:d0b9f6aef2a5542bc1142a",
+        "android_client_info": {
+          "package_name": "com.example.monstarev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwGXVKDd8wwGFITqBY6jhjA059EHlzpmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
