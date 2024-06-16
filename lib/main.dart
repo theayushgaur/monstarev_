@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:monstarev/firebase_options.dart';
 import 'package:monstarev/presentation/home_page.dart';
+import 'package:monstarev/provider/scroll_provider.dart';
 import 'package:monstarev/provider/textfield_provider.dart';
 import 'package:monstarev/provider/theme_changer.dart';
 import 'package:monstarev/provider/widgets_provider.dart';
@@ -18,6 +19,8 @@ void main() async {
           create: (_) => TextFieldProvider()),
       ChangeNotifierProvider<WidgetsProvider>(create: (_) => WidgetsProvider()),
       ChangeNotifierProvider<ThemeChanger>(create: (_) => ThemeChanger()),
+      ChangeNotifierProvider<ScrollControllerProvider>(
+          create: (_) => ScrollControllerProvider()),
     ], child: const MyApp()),
   );
 }

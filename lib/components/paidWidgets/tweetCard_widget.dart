@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:glowy_borders/glowy_borders.dart';
@@ -120,10 +121,16 @@ class TweetCardWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                       ),
-                      child: Image.asset(
-                        'assets/images/profile_picture.webp',
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            'https://i.postimg.cc/QtQsXJQk/profile-picture.webp',
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                         fit: BoxFit.cover,
                       ),
+                      // child: Image.asset(
+                      //   'assets/images/profile_picture.webp',
+                      //   fit: BoxFit.cover,
+                      // ),
                     ),
                     SizedBox(
                       width: 10,
@@ -171,10 +178,17 @@ class TweetCardWidget extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Image.asset(
-              'assets/images/pic_1.webp',
-              filterQuality: FilterQuality.high,
+
+            CachedNetworkImage(
+              imageUrl: 'https://i.postimg.cc/PqQR6VTD/pic-1.webp',
+              placeholder: (context, url) => CircularProgressIndicator(),
+              errorWidget: (context, url, error) => Icon(Icons.error),
             ),
+
+            // Image.asset(
+            //   'assets/images/pic_1.webp',
+            //   filterQuality: FilterQuality.low,
+            // ),
           ],
         ),
       ),

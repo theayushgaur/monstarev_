@@ -7,7 +7,7 @@ class DotPattern extends StatelessWidget {
   final double cy;
   final double cr;
   final Color color;
-  final Widget child;
+  // final Widget child;
 
   const DotPattern({
     Key? key,
@@ -17,7 +17,7 @@ class DotPattern extends StatelessWidget {
     this.cy = 1,
     this.cr = 1,
     this.color = const Color(0x66808080),
-    required this.child,
+    // required this.child,
   }) : super(key: key);
 
   @override
@@ -31,7 +31,7 @@ class DotPattern extends StatelessWidget {
         cr: cr,
         color: color,
       ),
-      child: child,
+      // child: child,
     );
   }
 }

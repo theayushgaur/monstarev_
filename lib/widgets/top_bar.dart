@@ -2,11 +2,13 @@ import 'dart:ui';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:monstarev/provider/widgets_provider.dart';
 import 'package:monstarev/widgets/search_popUp_container.dart';
 
 import 'package:provider/provider.dart';
+import 'package:url_launcher/link.dart';
 
 import '../provider/theme_changer.dart';
 import '../themes/theme.dart';
@@ -22,148 +24,213 @@ class TopBar extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth <= 1000) {
-          return ClipRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              child: Container(
-                height: 80,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.background,
-                  // border: BorderDirectional(
-                  //   bottom: BorderSide(
-                  //     color: Colors.red,
-                  //     width: 0.5,
-                  //   ),
-                  // ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      AnimatedTextKit(
-                        repeatForever: false,
-                        totalRepeatCount: 1,
-                        animatedTexts: [
-                          TypewriterAnimatedText(
-                            textStyle: GoogleFonts.spaceGrotesk(
-                              color: Colors.grey.shade300,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            'MonstaRev_',
-                          ),
-                        ],
-                      ),
-                      // Your existing top bar widgets here
-                      GestureDetector(
-                        onTap: () {
-                          searchBoxPopUp(context);
-                        },
-                        child: Container(
-                          height: 35,
-                          width: MediaQuery.of(context).size.width * 0.6,
-                          decoration: BoxDecoration(
-                            color: hoverProvider.isHovered
-                                ? Colors.grey.shade800
-                                : Colors.black,
-                            border: Border.all(
-                              color: Colors.grey.shade800,
-                              style: BorderStyle.solid,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Search components...',
+          return SizedBox(
+            height: 90,
+            width: MediaQuery.of(context).size.width,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Link(
+                    uri: Uri.parse('https://monstarev.com/'),
+                    builder: (BuildContext context,
+                            Future<void> Function()? followLink) =>
+                        MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: followLink,
+                        child: Row(
+                          children: [
+                            Text(
+                              'MonstaRev_ ',
                               style: GoogleFonts.spaceGrotesk(
-                                decoration: TextDecoration.none,
-                                color: hoverProvider.isHovered
-                                    ? Colors.white
-                                    : Colors.grey.shade400,
-                                fontSize: 14,
+                                color: Theme.of(context).colorScheme.primary,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
+                            Container(
+                              height: 23,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                  // gradient: LinearGradient(colors: [
+                                  //   Color.fromARGB(255, 33, 150, 243),
+                                  // ]),
+                                  color: Color.fromRGBO(216, 49, 32, 1),
+                                  // color: Color.fromARGB(255, 33, 150, 243),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Center(
+                                child: Text(
+                                  'Beta',
+                                  style: GoogleFonts.spaceGrotesk(
+                                    decoration: TextDecoration.none,
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      // MouseRegion(
+                      //   cursor: SystemMouseCursors.click,
+                      //   child: GestureDetector(
+                      //     onTap: () {
+                      //       searchBoxPopUp(context);
+                      //     },
+                      //     child: Container(
+                      //       height: 35,
+                      //       width: 160,
+                      //       decoration: BoxDecoration(
+                      //         color: Theme.of(context).colorScheme.background,
+                      //         border: Border.all(
+                      //           color: Colors.grey.shade800,
+                      //           style: BorderStyle.solid,
+                      //         ),
+                      //         borderRadius: BorderRadius.circular(8),
+                      //       ),
+                      //       child: Center(
+                      //         child: Text(
+                      //           'Search components...',
+                      //           style: GoogleFonts.spaceGrotesk(
+                      //             decoration: TextDecoration.none,
+                      //             color: Theme.of(context).colorScheme.primary,
+                      //             fontSize: 13,
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          if (themeChanger.thememode == darkTheme) {
+                            themeChanger.setTheme(lightTheme);
+                          } else {
+                            themeChanger.setTheme(darkTheme);
+                          }
+                        },
+                        child: Icon(
+                          Icons.light_mode,
+                          color: themeChanger.thememode == darkTheme
+                              ? Colors.grey.shade400
+                              : Colors.grey.shade900,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Link(
+                        target: LinkTarget.blank,
+                        uri: Uri.parse('https://x.com/theayushgaur'),
+                        builder: (BuildContext context,
+                                Future<void> Function()? followLink) =>
+                            MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                              onTap: followLink,
+                              child: SvgPicture.asset(
+                                  'assets/images/TwitterX(2).svg')),
                         ),
                       ),
                     ],
                   ),
-                ),
+                ],
               ),
             ),
           );
         } else {
           return SizedBox(
-            height: 120,
+            height: 90,
             width: MediaQuery.of(context).size.width,
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 0.0, vertical: 40),
+              padding: const EdgeInsets.symmetric(vertical: 20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                    children: [
-                      Image.asset('assets/images/logo_main.webp'),
-                      Text(
-                        'MonstaRev_ ',
-                        style: GoogleFonts.spaceGrotesk(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Container(
-                        height: 23,
-                        width: 40,
-                        decoration: BoxDecoration(
-                            // gradient: LinearGradient(colors: [
-                            //   Color.fromARGB(255, 33, 150, 243),
-                            // ]),
-                            color: Color.fromRGBO(216, 49, 32, 1),
-                            // color: Color.fromARGB(255, 33, 150, 243),
-                            borderRadius: BorderRadius.circular(5)),
-                        child: Center(
-                          child: Text(
-                            'Beta',
-                            style: GoogleFonts.spaceGrotesk(
-                              decoration: TextDecoration.none,
-                              color: Colors.white,
-                              fontSize: 12,
+                  Link(
+                    uri: Uri.parse('https://monstarev.com/'),
+                    builder: (BuildContext context,
+                            Future<void> Function()? followLink) =>
+                        MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        onTap: followLink,
+                        child: Row(
+                          children: [
+                            Image.asset('assets/images/logo_main (1).webp'),
+                            Text(
+                              'MonstaRev_ ',
+                              style: GoogleFonts.spaceGrotesk(
+                                color: Theme.of(context).colorScheme.primary,
+                                fontSize: 27,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
+                            Container(
+                              height: 23,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                  // gradient: LinearGradient(colors: [
+                                  //   Color.fromARGB(255, 33, 150, 243),
+                                  // ]),
+                                  color: Color.fromRGBO(216, 49, 32, 1),
+                                  // color: Color.fromARGB(255, 33, 150, 243),
+                                  borderRadius: BorderRadius.circular(5)),
+                              child: Center(
+                                child: Text(
+                                  'Beta',
+                                  style: GoogleFonts.spaceGrotesk(
+                                    decoration: TextDecoration.none,
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
+                    ),
                   ),
                   Row(
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          searchBoxPopUp(context);
-                        },
-                        child: Container(
-                          height: 35,
-                          width: 250,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.background,
-                            border: Border.all(
-                              color: Colors.grey.shade800,
-                              style: BorderStyle.solid,
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () {
+                            searchBoxPopUp(context);
+                          },
+                          child: Container(
+                            height: 35,
+                            width: 250,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.background,
+                              border: Border.all(
+                                color: Colors.grey.shade800,
+                                style: BorderStyle.solid,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Search components...',
-                              style: GoogleFonts.spaceGrotesk(
-                                decoration: TextDecoration.none,
-                                color: Theme.of(context).colorScheme.primary,
-                                fontSize: 14,
+                            child: Center(
+                              child: Text(
+                                'Search components...',
+                                style: GoogleFonts.spaceGrotesk(
+                                  decoration: TextDecoration.none,
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontSize: 14,
+                                ),
                               ),
                             ),
                           ),
@@ -190,25 +257,39 @@ class TopBar extends StatelessWidget {
                       SizedBox(
                         width: 20,
                       ),
-                      Container(
-                        height: 35,
-                        width: 140,
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.background,
-                            border: Border.all(
-                              color: Colors.grey.shade800,
-                              style: BorderStyle.solid,
-                            ),
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Center(
-                          child: Text(
-                            'Try it for free',
-                            style: GoogleFonts.spaceGrotesk(
-                              decoration: TextDecoration.none,
-                              color: Theme.of(context).colorScheme.primary,
-                              fontSize: 14,
-                            ),
-                          ),
+                      // Container(
+                      //   height: 35,
+                      //   width: 140,
+                      //   decoration: BoxDecoration(
+                      //       color: Theme.of(context).colorScheme.background,
+                      //       border: Border.all(
+                      //         color: Colors.grey.shade800,
+                      //         style: BorderStyle.solid,
+                      //       ),
+                      //       borderRadius: BorderRadius.circular(8)),
+                      //   child: Center(
+                      //     child: Text(
+                      //       'Try it for free',
+                      //       style: GoogleFonts.spaceGrotesk(
+                      //         decoration: TextDecoration.none,
+                      //         color: Theme.of(context).colorScheme.primary,
+                      //         fontSize: 14,
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+
+                      Link(
+                        target: LinkTarget.blank,
+                        uri: Uri.parse('https://x.com/theayushgaur'),
+                        builder: (BuildContext context,
+                                Future<void> Function()? followLink) =>
+                            MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                              onTap: followLink,
+                              child: SvgPicture.asset(
+                                  'assets/images/TwitterX(2).svg')),
                         ),
                       ),
                     ],
