@@ -17,10 +17,7 @@ import '../components/errorMessage_widget.dart';
 import '../components/gradient_widget.dart';
 import '../components/iconContainer_widget.dart';
 import '../components/notificationSent_widget.dart';
-import '../components/paidWidgets/notification_widget.dart';
-import '../components/paidWidgets/search_textField_container.dart';
-import '../components/paidWidgets/social_buttons.dart';
-import '../components/paidWidgets/tweetCard_widget.dart';
+
 import '../components/radioButton_widget.dart';
 import '../components/searchBar_widget.dart';
 import '../components/shimmer_glowing_burron.dart';
@@ -30,12 +27,11 @@ import '../components/switch_widget.dart';
 import '../components/tabBar_widget.dart';
 import '../components/textField/password_textField.dart';
 import '../components/textField/text_field_1.dart';
-import '../components/introduction_container.dart';
+
 import '../presentation/container/universal_container.dart';
 import '../provider/theme_changer.dart';
 
 class Body extends StatelessWidget {
-  // ignore: use_key_in_widget_constructors
   const Body({Key? key});
 
   @override
@@ -73,7 +69,7 @@ class Body extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Flutter components to build',
+                                'Flutter components to build hi',
                                 style: GoogleFonts.arimo(
                                   decoration: TextDecoration.none,
                                   color: Theme.of(context).colorScheme.primary,
