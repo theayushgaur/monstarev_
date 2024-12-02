@@ -4,7 +4,8 @@ import '../../widgets/code_dialog_box.dart';
 
 class UniversalContainerContainer extends StatelessWidget {
   final String ContainerName;
-
+  final double height;
+  final double width;
   final Widget newWidget;
   final String codeSnippet;
 
@@ -13,6 +14,8 @@ class UniversalContainerContainer extends StatelessWidget {
     required this.ContainerName,
     required this.newWidget,
     required this.codeSnippet,
+    required this.height,
+    required this.width,
   }) : super(key: key);
 
   // bool _isHovered = false;
@@ -31,8 +34,8 @@ class UniversalContainerContainer extends StatelessWidget {
       //   });
       // },
       child: Container(
-        height: 280,
-        width: 375,
+        height: height,
+        width: width,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade800, width: 0.8),
           color: Theme.of(context).colorScheme.onTertiary,

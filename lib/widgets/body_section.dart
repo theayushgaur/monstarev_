@@ -16,8 +16,14 @@ import '../components/dropDown_widget.dart';
 import '../components/errorMessage_widget.dart';
 import '../components/gradient_widget.dart';
 import '../components/iconContainer_widget.dart';
+import '../components/introduction_container.dart';
 import '../components/notificationSent_widget.dart';
 
+import '../components/paidWidgets/expense_widget.dart';
+import '../components/paidWidgets/notification_widget.dart';
+import '../components/paidWidgets/search_textField_container.dart';
+import '../components/paidWidgets/social_buttons.dart';
+import '../components/paidWidgets/tweetCard_widget.dart';
 import '../components/radioButton_widget.dart';
 import '../components/searchBar_widget.dart';
 import '../components/shimmer_glowing_burron.dart';
@@ -30,6 +36,7 @@ import '../components/textField/text_field_1.dart';
 
 import '../presentation/container/universal_container.dart';
 import '../provider/theme_changer.dart';
+import 'bounce_container.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key});
@@ -69,7 +76,7 @@ class Body extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                'Flutter components to build hi',
+                                'Flutter components to build',
                                 style: GoogleFonts.arimo(
                                   decoration: TextDecoration.none,
                                   color: Theme.of(context).colorScheme.primary,
@@ -352,10 +359,17 @@ class Body extends StatelessWidget {
                 //       containerName: 'SearchBar Container',
                 //       codeSnippet: 'ss',
                 //     ),
-                //     DockContainer(
-                //       containerName: 'Dock Container',
-                //       codeSnippet: ComponentCodes.DockContainer,
+                //     UniversalContainerContainer(
+                //       height: 530,
+                //       width: 500,
+                //       ContainerName: 'Button',
+                //       newWidget: ExpenseWidget(),
+                //       codeSnippet: ComponentCodes.Button,
                 //     ),
+                //     // DockContainer(
+                //     //   containerName: 'Dock Container',
+                //     //   codeSnippet: ComponentCodes.DockContainer,
+                //     // ),
                 //     // Fake(
                 //     //   containerName: 'Social Buttons',
                 //     //   buttonName: 'Google',
@@ -374,41 +388,57 @@ class Body extends StatelessWidget {
                   alignment: WrapAlignment.center,
                   children: [
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'Button',
                       newWidget: Button2(buttonName: 'CLICK'),
                       codeSnippet: ComponentCodes.Button,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'Switch',
                       newWidget: SwitchWidget(),
                       codeSnippet: ComponentCodes.Switch,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'Error Message',
                       newWidget: ErrorMessageWidget(),
                       codeSnippet: ComponentCodes.ErrorMessage,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'CheckBox',
                       newWidget: CheckBoxWidget(),
                       codeSnippet: ComponentCodes.CheckBox,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'Button',
                       newWidget: TextField2(hintText: 'Placeholder'),
                       codeSnippet: ComponentCodes.TextField,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'TabBar',
                       newWidget: TabBarWidget(),
                       codeSnippet: ComponentCodes.TabBar,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'Slider',
                       newWidget: SliderWidget(),
                       codeSnippet: ComponentCodes.Slider,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'SearchBox',
                       newWidget: SearchBarWidget(
                         hintText: 'Search',
@@ -416,51 +446,71 @@ class Body extends StatelessWidget {
                       codeSnippet: ComponentCodes.SearchBar,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'RadioButton',
                       newWidget: RadioButtonWidget(),
                       codeSnippet: ComponentCodes.RadioButton,
                     ),
                     UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'DateTime Selector',
                       newWidget: DateTimeWidget(),
                       codeSnippet: ComponentCodes.DateTime,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'CustomCard',
                       newWidget: CreditCardWidget(),
                       codeSnippet: ComponentCodes.CustomCard,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'Custom DropBox',
                       newWidget: DropDownWidget(),
                       codeSnippet: ComponentCodes.DropDown,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'Success Message',
                       newWidget: SuccessMessageWidget(),
                       codeSnippet: ComponentCodes.SuccessMessage,
                     ),
                     UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'AnimatedButton',
                       newWidget: ToggleButtonWidget(),
                       codeSnippet: ComponentCodes.AnimatedButton,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'PasswordTextField',
                       newWidget: PasswordTextFieldWidget(),
                       codeSnippet: ComponentCodes.PasswordField,
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'MessageSent Alert',
                       codeSnippet: ComponentCodes.MessageSentAlert,
                       newWidget: NotificationSentWidget(),
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'Glowing Button',
                       codeSnippet: ComponentCodes.GlowingButton,
                       newWidget: GlowingButton(),
                     ),
                     const UniversalContainerContainer(
+                      height: 280,
+                      width: 375,
                       ContainerName: 'MessageSent Alert',
                       codeSnippet: ComponentCodes.MessageSentAlert,
                       newWidget: NotificationSentWidget(),
